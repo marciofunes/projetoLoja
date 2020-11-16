@@ -10,7 +10,6 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +26,7 @@ public class MySQL {
     private String servidor = "localhost:3306";
     private String nomeDoBanco = "banco_loja";
     private String usuario = "marcio";
-    private String senha = "root";
+    private String senha = "marcio";
     
     //Construtor    
     public MySQL(){
@@ -69,10 +68,13 @@ public class MySQL {
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/" + nomeDoBanco, usuario, senha);           
+            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/" + nomeDoBanco, usuario, senha);
+            //conn = DriverManager.getConnection("jdbc:mysql://localhost3306/banco_loja", "root", "root");
+            
             if(conn != null){
                 System.out.println("Conexão efetuada com sucesso! " + "ID: " + conn);
             }            
+            
         } catch (Exception e) {
             System.out.println("Conexão não realizada - ERRO: " + e.getMessage());
         }
@@ -92,7 +94,7 @@ public class MySQL {
         int status = 0;
         try {
             //createStatement de con para criar o Statement
-            this.setStatement(getConn().createStatement());
+            this.setStatement(getConn().createStatement());            
 
             // Definido o Statement, executamos a query no banco de dados
             this.getStatement().executeUpdate(SQL);            
@@ -118,4 +120,18 @@ public class MySQL {
         }
     }
     
+    public boolean updateSQL(String pSQL){
+        try {            
+            //createStatement de con para criar o Statement
+            this.setStatement(getConn().createStatement());
+
+            // Definido o Statement, executamos a query no banco de dados
+            getStatement().executeUpdate(pSQL);
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
