@@ -49,6 +49,7 @@ public class ViewCadastroCliente extends javax.swing.JFrame {
         } catch (Exception e) {
             
             System.out.println("Erro ao cadastrar cliente " +  e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente");
             
         } finally{            
             this.conectar.fechaBanco();
@@ -106,7 +107,9 @@ public class ViewCadastroCliente extends javax.swing.JFrame {
     
     private void deletarCliente(Cliente novoCliente){
         this.conectar.conectaBanco();
-        String consultaCpf = this.consultaCpf.getText();        
+        
+        String consultaCpf = this.consultaCpf.getText(); 
+        
         try {            
             this.conectar.updateSQL(
                 "DELETE FROM cadastroclientes "
@@ -128,7 +131,9 @@ public class ViewCadastroCliente extends javax.swing.JFrame {
     
     public void atualizarCliente(Cliente novoCliente){
         this.conectar.conectaBanco();
+        
         String consultaCpf = this.consultaCpf.getText();
+        
         try {
             this.conectar.updateSQL(
                 "UPDATE cadastroclientes SET "                    

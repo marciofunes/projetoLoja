@@ -12,7 +12,10 @@ package View;
  */
 public class ViewPrincipal2 extends javax.swing.JFrame {
 
-    /** Creates new form ViewPrincipal2 */
+    ViewCadastroCliente cadastroCliente = new ViewCadastroCliente();
+    ViewCadastroProduto cadastroProduto = new ViewCadastroProduto();
+    
+    
     public ViewPrincipal2() {
         initComponents();
     }
@@ -45,9 +48,19 @@ public class ViewPrincipal2 extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/adicionar-usuario (1).png"))); // NOI18N
         jButton1.setText("Cadastrar Cliente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/carrinho-de-compras.png"))); // NOI18N
         jButton2.setText("Cadastrar Produtos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("MENU");
@@ -153,6 +166,14 @@ public class ViewPrincipal2 extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new ViewCadastroCliente().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new ViewCadastroProduto().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
